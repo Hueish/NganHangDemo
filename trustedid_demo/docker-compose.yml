@@ -1,0 +1,22 @@
+services:
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: trustedid-openldap
+    environment:
+      LDAP_ORGANISATION: PTIT Bank
+      LDAP_DOMAIN: ptitbank.local
+      LDAP_ADMIN_PASSWORD: admin
+      LDAP_TLS: "false"
+      LDAP_REMOVE_CONFIG_AFTER_SETUP: "false"
+    ports:
+      - "1389:389"
+      - "1636:636"
+    volumes:
+      - openldap_data:/var/lib/ldap
+      - openldap_config:/etc/ldap/slapd.d
+      - ./ldap/bootstrap:/container/service/slapd/assets/config/bootstrap/ldif/custom:ro
+    restart: unless-stopped
+
+volumes:
+  openldap_data:
+  openldap_config:

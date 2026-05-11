@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="p-4 pt-5 text-center">
+    <div class="mb-4 pt-3">
+        <div class="d-inline-block bg-white rounded-circle p-3 mb-2" style="width: 90px; height: 90px;">
+            <i class="fa-solid fa-building-columns fa-3x" style="color: var(--mb-blue-dark);"></i>
+        </div>
+        <h2 class="fw-bold text-white mb-0" style="letter-spacing: 1px;">PTIT<span style="color: #00d2ff;">Bank</span></h2>
+        <p class="small text-white-50">Vì một thế hệ số an toàn</p>
+    </div>
+    <div class="mt-5 px-2">
+        <form action="/do-auth" method="post" id="auth-form">
+            <input type="hidden" name="rp_nonce" value="{{ rp_nonce }}">
+            <input type="hidden" name="username" id="username-hidden">
+
+            <div id="step-account" class="animate__animated animate__fadeIn text-start">
+                <h5 class="text-white mb-3 fw-normal text-center">Nhập tài khoản</h5>
+                <label for="account-ref" class="form-label text-white-50 small mb-2">Mã tài khoản hoặc UID</label>
+                <input type="text" id="account-ref" class="form-control form-control-mb mb-3" placeholder="Ví dụ: b23dcat336 hoặc 888833602026">
+                <button type="button" class="btn btn-mb-primary w-100 mb-3" onclick="verifyAccount()">TIẾP TỤC</button>
+                <div id="account-error" class="small text-warning text-center"></div>
+            </div>
+
+            <div id="step-pin" style="display: none;" class="animate__animated animate__fadeIn">
+                <h5 class="text-white mb-4 fw-normal">Đăng nhập bằng mã PIN</h5>
+                <input type="password" name="pin" id="pin-input" class="form-control form-control-mb fs-2 fw-bold mb-4" 
+                       placeholder="••••••" maxlength="6" inputmode="numeric" style="letter-spacing: 15px;">
+                <button type="button" class="btn btn-mb-primary w-100 mb-3" onclick="verifyPIN()">TIẾP TỤC</button>
+                <a href="#" class="text-white-50 small text-decoration-none">Quên mã PIN?</a>
+            </div>
+
+            <div id="step-bio" style="display: none;" class="animate__animated animate__zoomIn">
+                <div class="mb-4">
+                    <i class="fa-solid fa-fingerprint fa-4x text-info mb-3"></i>
+                    <h5 class="text-white fw-normal">Xác thực sinh trắc học</h5>
+                    <p class="small text-white-50 px-4">Sử dụng FaceID/Vân tay để kích hoạt ranh giới tin cậy TEE</p>
+                </div>
+                <button type="button" class="btn btn-mb-primary w-100 py-3" onclick="triggerBiometrics()">
+                    QUÉT FACE ID / TOUCH ID
+                </button>
+            </div>
+
+            <div id="step-sim" style="display: none;" class="text-center mt-5">
+                <div class="spinner-border text-info mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
+                <h5 class="text-white">Đang gửi lệnh OTA...</h5>
+                <p class="text-white-50 small">Vui lòng kiểm tra Terminal và nhấn <b>'Y'</b> để phê duyệt luồng SIM-OTP</p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    async function verifyAccount() {
+        const accountRef = document.getElementById('account-ref').value.trim();
+        const errorBox = document.getElementById('account-error');
+
+        if (!accountRef) {
+            errorBox.textContent = 'Vui lòng nhập mã tài khoản hoặc UID.';
+            return;
+        }
+
+        errorBox.textContent = 'Đang rà soát tài khoản...';
+
+        try {
+            const formData = new URLSearchParams();
+            formData.append('account_ref', accountRef);
+
+            const response = await fetch('/check-account', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData,
+            });
+
+            const payload = await response.json();
+
+            if (!payload.exists) {
+                errorBox.textContent = payload.detail || 'Tài khoản không tồn tại.';
+                return;
+            }
+
+            document.getElementById('username-hidden').value = payload.uid;
+            document.getElementById('step-account').style.display = 'none';
+            document.getElementById('step-pin').style.display = 'block';
+            document.getElementById('pin-input').focus();
+        } catch (error) {
+            errorBox.textContent = 'Không thể kiểm tra tài khoản lúc này.';
+        }
+    }
+
+    function verifyPIN() {
+        const pin = document.getElementById('pin-input').value;
+        if (pin.length < 4) { alert("Vui lòng nhập mã PIN"); return; }
+        document.getElementById('step-pin').style.display = 'none';
+        document.getElementById('step-bio').style.display = 'block';
+    }
+
+    async function triggerBiometrics() {
+        try {
+            const challenge = new Uint8Array(32);
+            window.crypto.getRandomValues(challenge);
+            await navigator.credentials.create({
+                publicKey: {
+                    challenge,
+                    rp: { name: "PTITBank Security" },
+                    user: { id: new Uint8Array([1]), name: "sv", displayName: "Student" },
+                    pubKeyCredParams: [{alg: -7, type: "public-key"}],
+                    authenticatorSelection: { userVerification: "required" }
+                }
+            });
+            proceedToSim();
+        } catch (e) { proceedToSim(); }
+    }
+
+    function proceedToSim() {
+        document.getElementById('step-bio').style.display = 'none';
+        document.getElementById('step-sim').style.display = 'block';
+        setTimeout(() => { document.getElementById('auth-form').submit(); }, 1000);
+    }
+</script>
+{% endblock %}

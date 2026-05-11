@@ -1,0 +1,154 @@
+dn: ou=users,dc=ptitbank,dc=local
+objectClass: organizationalUnit
+ou: users
+
+dn: uid=b23dcat336,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: b23dcat336
+cn: Nguyen Tai Hoang Viet
+sn: Nguyen
+mail: nguyentaihoangviet@ptitbank.local
+telephoneNumber: +84901122334
+mobile: +84901122334
+description: 012345678901
+employeeNumber: 888833602026
+userPassword: 67aea499d995eebd21278f76bf8d6514dd1e709030f924dcf485f959568d68a0
+
+dn: uid=b23dcat101,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: b23dcat101
+cn: Tran Thi B
+sn: Tran
+mail: tranthib@ptitbank.local
+telephoneNumber: +84902233445
+mobile: +84902233445
+description: 012345678902
+employeeNumber: 888810102026
+userPassword: ce795ceab2bf2cf7ebb3f3a085797c928631fdf34ef57d04c779a1138ad3c636
+
+dn: uid=trang_ninh,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: trang_ninh
+cn: Trang Ninh
+sn: Ninh
+mail: trang.ninh@ptitbank.local
+telephoneNumber: +84903344556
+mobile: +84903344556
+description: 012345678903
+employeeNumber: 999988880000
+userPassword: 16cfc4eaf2a3cfc0563182be8921d1cf36cb3eb679321f04194b346d78567982
+
+dn: uid=leminh_anh,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: leminh_anh
+cn: Le Minh Anh
+sn: Anh
+mail: leminhanh@ptitbank.local
+telephoneNumber: +84904455667
+mobile: +84904455667
+description: 012345678904
+employeeNumber: 888811112024
+userPassword: eb4ff911cd91c3330838689f87540c6639795e85f09af3846d3dfde1dbba2f17
+
+dn: uid=pham_quang_huy,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: pham_quang_huy
+cn: Pham Quang Huy
+sn: Huy
+mail: phamquanghuy@ptitbank.local
+telephoneNumber: +84905566778
+mobile: +84905566778
+description: 012345678905
+employeeNumber: 888822223025
+userPassword: f282ecdd23a031117e1aba5c4a7933c3b3dfd6d3e91f07acaf9d34dc94844108
+
+dn: uid=nguyen_thao_vy,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: nguyen_thao_vy
+cn: Nguyen Thao Vy
+sn: Vy
+mail: nguyenthaovy@ptitbank.local
+telephoneNumber: +84906677889
+mobile: +84906677889
+description: 012345678906
+employeeNumber: 888833334024
+userPassword: ffff46ea5a160e0cee7476f6491654f361d89471385b23ef83dcbafb08568341
+
+dn: uid=do_hoang_long,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: do_hoang_long
+cn: Do Hoang Long
+sn: Long
+mail: dohoanglong@ptitbank.local
+telephoneNumber: +84907788990
+mobile: +84907788990
+description: 012345678907
+employeeNumber: 888844445026
+userPassword: 22a45f1d97a8d205aa6564891a4ae7c01f815d7c7cd86b9bbbfe39a46e8eb808
+
+dn: uid=vu_minh_tuan,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: vu_minh_tuan
+cn: Vu Minh Tuan
+sn: Tuan
+mail: vuminhtuan@ptitbank.local
+telephoneNumber: +84908899001
+mobile: +84908899001
+description: 012345678908
+employeeNumber: 888855556027
+userPassword: 92e2a13ce7a82216bb8cdb9926bd544be3bd8a81bf0b51d29b9569e0384a49f3
+
+dn: uid=hoai_anh,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: hoai_anh
+cn: Hoai Anh
+sn: Anh
+mail: hoaianh@ptitbank.local
+telephoneNumber: +84909900112
+mobile: +84909900112
+description: 012345678909
+employeeNumber: 888866667028
+userPassword: a71e4ee8f5ecbd3431030483072443447e1147da98ef7fcdd651eb64c85f7e24
+
+dn: uid=phuc_dat,ou=users,dc=ptitbank,dc=local
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+uid: phuc_dat
+cn: Phuc Dat
+sn: Dat
+mail: phucdat@ptitbank.local
+telephoneNumber: +84901001123
+mobile: +84901001123
+description: 012345678910
+employeeNumber: 888877778029
+userPassword: 4abc3e98a44b5dbb012c4e2705d36b267aa7adaa24a0628c6803ad1b7ec15237
+

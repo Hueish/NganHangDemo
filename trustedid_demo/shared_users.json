@@ -1,0 +1,23 @@
+{
+  "uid=b23dcat336,ou=users,dc=ptitbank,dc=local": {
+    "cn": "Nguyen Van A",
+    "mail": "nguyenvana@ptitbank.local",
+    "mobile": "+84901122334",
+    "idCardNumber": "012345678901",
+    "accountNumber": "888833602026"
+  },
+  "uid=b23dcat101,ou=users,dc=ptitbank,dc=local": {
+    "cn": "Tran Thi B",
+    "mail": "tranthib@ptitbank.local",
+    "mobile": "+84902233445",
+    "idCardNumber": "012345678902",
+    "accountNumber": "888810102026"
+  },
+  "uid=trang_ninh,ou=users,dc=ptitbank,dc=local": {
+    "cn": "Trang Ninh",
+    "mail": "trang.ninh@ptitbank.local",
+    "mobile": "+84903344556",
+    "idCardNumber": "012345678903",
+    "accountNumber": "999988880000"
+  }
+}
